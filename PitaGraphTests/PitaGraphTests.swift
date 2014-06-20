@@ -68,6 +68,17 @@ class PitaGraphTests: XCTestCase
     XCTAssertEqual(graph.adjacent(a, y: c) , false , "C should not be adjacent to A")
   }
   
+  func testNoVerticeInDouble()
+  {
+    var graph = SPTGraph()
+    
+    let a = SPTVertice(name: "A")
+    
+    graph.addVertice(a)
+    
+    XCTAssertEqual(graph.order() , 1  , "There should be only one vertice in the graph")
+  }
+  
   func testOnlyOneEdgeBetweenTwoVertices()
   {
     var graph = SPTGraph()
@@ -112,7 +123,7 @@ class PitaGraphTests: XCTestCase
     graph.addEdge(a, y: b)
     
     XCTAssertEqual(graph.containsVertice(a) , true  , "There should be A in the graph")
-    XCTAssertEqual(graph.containsVertice(b) , false  , "There should not be B in the graph")
+    XCTAssertEqual(graph.containsVertice(b) , false , "There should not be B in the graph")
   }
   
 }

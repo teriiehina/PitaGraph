@@ -21,6 +21,7 @@ class SPTGraph: NSObject
     self.oriented = false
   }
   
+  // return true if there is an egde between x and y
   func adjacent(x: SPTVertice, y: SPTVertice) -> Bool
   {
     for edge in self.edges
@@ -71,6 +72,8 @@ class SPTGraph: NSObject
     self.edges.append(edge)
   }
   
+  // this is certainly not optimal but for the moment being
+  // we are seeking robustness more than efficiency
   func containsVertice(x: SPTVertice) -> Bool
   {
     return self.vertices.filter({$0 == x}).count > 0
