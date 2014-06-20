@@ -29,11 +29,13 @@ class SPTGraph: NSObject
     return SPTVertice[]()
   }
   
+  // the order of a graph is |V| (the number of vertices)
   func order() -> Int
   {
-    return 0
+    return self.vertices.count
   }
   
+  // A graph's size is |E|, the number of edges
   func size() -> Int
   {
     return 0
@@ -41,7 +43,7 @@ class SPTGraph: NSObject
   
   func addVertice(x: SPTVertice)
   {
-    
+    self.vertices.append(x)
   }
   
   func addEdge(x: SPTVertice, y:SPTVertice)

@@ -8,28 +8,37 @@
 
 import XCTest
 
-class PitaGraphTests: XCTestCase {
+import PitaGraph
+
+class PitaGraphTests: XCTestCase
+{
+  override func setUp()
+  {
+    super.setUp()
+  }
+  
+  override func tearDown()
+  {
+    super.tearDown()
+  }
+  
+  func testGraphOrder()
+  {
+    var graph = SPTGraph()
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    XCTAssertEqual(graph.order() , 0 , "The graph should be empty")
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+    graph.addVertice(SPTVertice(name: "test"))
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+    XCTAssertEqual(graph.order() , 1 , "The graph should have one vertice")
+  }
+  
+//  func testPerformanceExample()
+//  {
+//    // This is an example of a performance test case.
+//    self.measureBlock() {
+//      // Put the code you want to measure the time of here.
+//    }
+//  }
+  
 }

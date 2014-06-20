@@ -10,6 +10,12 @@ import UIKit
 
 class SPTVertice: NSObject
 {
-  var name: String?
+  var name: String
   
+  init(name: String)
+  {
+    self.name = name
+    
+    super.init()
+  }
 }
