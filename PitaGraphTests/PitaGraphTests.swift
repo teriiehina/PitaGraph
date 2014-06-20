@@ -26,11 +26,28 @@ class PitaGraphTests: XCTestCase
   {
     var graph = SPTGraph()
     
-    XCTAssertEqual(graph.order() , 0 , "The graph should be empty")
+    XCTAssertEqual(graph.order() , 0 , "The graph should be have no vertice")
     
-    graph.addVertice(SPTVertice(name: "test"))
+    graph.addVertice(SPTVertice(name: "A"))
     
     XCTAssertEqual(graph.order() , 1 , "The graph should have one vertice")
+  }
+  
+  func testGraphSize()
+  {
+    var graph = SPTGraph()
+    
+    XCTAssertEqual(graph.size() , 0 , "The graph should have no edge")
+    
+    let a = SPTVertice(name: "A")
+    let b = SPTVertice(name: "B")
+    
+    graph.addVertice(a)
+    graph.addVertice(b)
+    
+    graph.addEdge(a, y: b)
+    
+    XCTAssertEqual(graph.size() , 1 , "The graph should have one edge")
   }
   
 //  func testPerformanceExample()

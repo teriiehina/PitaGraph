@@ -38,7 +38,7 @@ class SPTGraph: NSObject
   // A graph's size is |E|, the number of edges
   func size() -> Int
   {
-    return 0
+    return self.edges.count
   }
   
   func addVertice(x: SPTVertice)
@@ -48,6 +48,7 @@ class SPTGraph: NSObject
   
   func addEdge(x: SPTVertice, y:SPTVertice)
   {
-    
+    let edge = SPTEdge(start: x, end: y)
+    self.edges.append(edge)
   }
 }
