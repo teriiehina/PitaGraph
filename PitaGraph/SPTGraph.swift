@@ -23,6 +23,14 @@ class SPTGraph: NSObject
   
   func adjacent(x: SPTVertice, y: SPTVertice) -> Bool
   {
+    for edge in self.edges
+    {
+      if (edge.startVertice != x) {continue}
+      if (edge.endVertice != y)   {continue}
+      
+      return true
+    }
+    
     return false
   }
   
