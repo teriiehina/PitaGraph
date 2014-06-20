@@ -86,4 +86,33 @@ class PitaGraphTests: XCTestCase
     XCTAssertEqual(graph.size() , 1  , "There should be only one edge between A and B")
   }
   
+  func testEdgeOnKnownVertices()
+  {
+    var graph = SPTGraph()
+    
+    let a = SPTVertice(name: "A")
+    let b = SPTVertice(name: "B")
+    
+    graph.addVertice(a)
+    
+    graph.addEdge(a, y: b)
+    
+    XCTAssertEqual(graph.size() , 0  , "There should be no edge")
+  }
+  
+  func testVerticeContainment()
+  {
+    var graph = SPTGraph()
+    
+    let a = SPTVertice(name: "A")
+    let b = SPTVertice(name: "B")
+    
+    graph.addVertice(a)
+    
+    graph.addEdge(a, y: b)
+    
+    XCTAssertEqual(graph.containsVertice(a) , true  , "There should be A in the graph")
+    XCTAssertEqual(graph.containsVertice(b) , false  , "There should not be B in the graph")
+  }
+  
 }

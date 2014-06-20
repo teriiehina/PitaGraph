@@ -56,14 +56,24 @@ class SPTGraph: NSObject
     self.vertices.append(x)
   }
   
+  // Will first verify that 
+  //
+  //  - there isn't already an edge between the two vertices between adding one
+  //  - the two vertices are in the graph
+  
   func addEdge(x: SPTVertice, y:SPTVertice)
   {
-    if self.adjacent(x, y: y)
-    {
-      return
-    }
+    if self.adjacent(x, y: y)   { return }
+    if !self.containsVertice(x) { return }
+    if !self.containsVertice(y) { return }
     
     let edge = SPTEdge(start: x, end: y)
     self.edges.append(edge)
   }
+  
+  func containsVertice(x: SPTVertice) -> Bool
+  {
+    return self.vertices.filter({$0 == x}).count > 0
+  }
+  
 }
