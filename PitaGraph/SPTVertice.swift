@@ -8,6 +8,8 @@
 
 import UIKit
 
-class SPTVertice: NSObject {
-   
+class SPTVertice: NSObject
+{
+  var name: String?
+  
 }

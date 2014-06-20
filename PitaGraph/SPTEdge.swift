@@ -8,6 +8,14 @@
 
 import UIKit
 
-class SPTEdge: NSObject {
-   
+class SPTEdge: NSObject
+{
+  var startVertice: SPTVertice
+  var endVertice:   SPTVertice
+  
+  init(start: SPTVertice , end: SPTVertice)
+  {
+    self.startVertice = start
+    self.endVertice   = end
+  }
 }
