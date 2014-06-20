@@ -12,11 +12,13 @@ class SPTGraph: NSObject
 {
   var vertices: SPTVertice[]
   var edges:    SPTEdge[]
+  var oriented: Bool
   
   init()
   {
     self.vertices = SPTVertice[]()
     self.edges    = SPTEdge[]()
+    self.oriented = false
   }
   
   func adjacent(x: SPTVertice, y: SPTVertice) -> Bool

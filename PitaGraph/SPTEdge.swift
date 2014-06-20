@@ -13,9 +13,15 @@ class SPTEdge: NSObject
   var startVertice: SPTVertice
   var endVertice:   SPTVertice
   
+  var oriented:     Bool
+  var value:        Int
+  
   init(start: SPTVertice , end: SPTVertice)
   {
     self.startVertice = start
     self.endVertice   = end
+    
+    self.oriented     = false
+    self.value        = 1
   }
 }
