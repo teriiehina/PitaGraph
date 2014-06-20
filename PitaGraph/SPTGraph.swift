@@ -58,6 +58,11 @@ class SPTGraph: NSObject
   
   func addEdge(x: SPTVertice, y:SPTVertice)
   {
+    if self.adjacent(x, y: y)
+    {
+      return
+    }
+    
     let edge = SPTEdge(start: x, end: y)
     self.edges.append(edge)
   }

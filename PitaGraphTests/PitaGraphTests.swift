@@ -54,8 +54,6 @@ class PitaGraphTests: XCTestCase
   {
     var graph = SPTGraph()
     
-    XCTAssertEqual(graph.size() , 0 , "The graph should have no edge")
-    
     let a = SPTVertice(name: "A")
     let b = SPTVertice(name: "B")
     let c = SPTVertice(name: "C")
@@ -70,12 +68,22 @@ class PitaGraphTests: XCTestCase
     XCTAssertEqual(graph.adjacent(a, y: c) , false , "C should not be adjacent to A")
   }
   
-//  func testPerformanceExample()
-//  {
-//    // This is an example of a performance test case.
-//    self.measureBlock() {
-//      // Put the code you want to measure the time of here.
-//    }
-//  }
+  func testOnlyOneEdgeBetweenTwoVertices()
+  {
+    var graph = SPTGraph()
+    
+    XCTAssertEqual(graph.size() , 0 , "The graph should have no edge")
+    
+    let a = SPTVertice(name: "A")
+    let b = SPTVertice(name: "B")
+    
+    graph.addVertice(a)
+    graph.addVertice(b)
+    
+    graph.addEdge(a, y: b)
+    graph.addEdge(a, y: b)
+    
+    XCTAssertEqual(graph.size() , 1  , "There should be only one edge between A and B")
+  }
   
 }
