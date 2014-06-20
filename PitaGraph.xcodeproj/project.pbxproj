@@ -10,6 +10,9 @@
 		D715D7581954D39700460369 /* PitaGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = D715D7571954D39700460369 /* PitaGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D715D75E1954D39700460369 /* PitaGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D715D7521954D39700460369 /* PitaGraph.framework */; };
 		D715D7651954D39700460369 /* PitaGraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D715D7641954D39700460369 /* PitaGraphTests.swift */; };
+		D715D76F1954D3BB00460369 /* SPTGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = D715D76E1954D3BB00460369 /* SPTGraph.swift */; };
+		D715D7711954D3CA00460369 /* SPTVertice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D715D7701954D3CA00460369 /* SPTVertice.swift */; };
+		D715D7731954D3E000460369 /* SPTEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D715D7721954D3E000460369 /* SPTEdge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		D715D75D1954D39700460369 /* PitaGraphTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitaGraphTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D715D7631954D39700460369 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D715D7641954D39700460369 /* PitaGraphTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitaGraphTests.swift; sourceTree = "<group>"; };
+		D715D76E1954D3BB00460369 /* SPTGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPTGraph.swift; sourceTree = "<group>"; };
+		D715D7701954D3CA00460369 /* SPTVertice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPTVertice.swift; sourceTree = "<group>"; };
+		D715D7721954D3E000460369 /* SPTEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPTEdge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,9 @@
 			children = (
 				D715D7571954D39700460369 /* PitaGraph.h */,
 				D715D7551954D39700460369 /* Supporting Files */,
+				D715D76E1954D3BB00460369 /* SPTGraph.swift */,
+				D715D7701954D3CA00460369 /* SPTVertice.swift */,
+				D715D7721954D3E000460369 /* SPTEdge.swift */,
 			);
 			path = PitaGraph;
 			sourceTree = "<group>";
@@ -210,6 +219,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D715D7711954D3CA00460369 /* SPTVertice.swift in Sources */,
+				D715D76F1954D3BB00460369 /* SPTGraph.swift in Sources */,
+				D715D7731954D3E000460369 /* SPTEdge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +332,7 @@
 		D715D7691954D39700460369 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -329,12 +342,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		D715D76A1954D39700460369 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
