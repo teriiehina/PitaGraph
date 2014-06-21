@@ -16,6 +16,8 @@ class SPTGraph: NSObject
   
   
   
+  /// the default graph is empty and non-oriented
+  
   init()
   {
     self.vertices = SPTVertice[]()
@@ -25,7 +27,7 @@ class SPTGraph: NSObject
   
   
   
-  // return true if there is an egde between x and y
+  /// Return true if there is an egde between x and y
   
   func adjacent(x: SPTVertice, y: SPTVertice) -> Bool
   {
@@ -41,6 +43,11 @@ class SPTGraph: NSObject
   }
   
   
+  
+  // Return all vertices y such as
+  //
+  //  - there is an edge from x to y or 
+  //  - there is an edge from y to x.
   
   func neighbors(x: SPTVertice) -> SPTVertice[]
   {
@@ -65,7 +72,7 @@ class SPTGraph: NSObject
   
   
   
-  // the order of a graph is |V| (the number of vertices)
+  /// return the order of a graph, |V|, i.e. the number of vertices
   
   func order() -> Int
   {
@@ -74,12 +81,15 @@ class SPTGraph: NSObject
   
   
   
-  // A graph's size is |E|, the number of edges
+  /// return the graph's size, |E|, i.e. the number of edges
   
   func size() -> Int
   {
     return self.edges.count
   }
+  
+  
+  /// Add the given vertice to the graph
   
   func addVertice(x: SPTVertice)
   {
@@ -87,7 +97,8 @@ class SPTGraph: NSObject
   }
   
   
-  
+  /// Add an edge between the two given vertices.
+  ///
   /// Will first verify that
   ///
   ///  - there isn't already an edge between the two vertices between adding one
@@ -104,7 +115,8 @@ class SPTGraph: NSObject
   }
   
   
-  
+  /// Return true if the graph contains the given vertice
+  ///
   /// this is certainly not optimal but for the moment being
   /// we are seeking robustness more than efficiency
   
