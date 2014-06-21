@@ -14,6 +14,8 @@ class SPTGraph: NSObject
   var edges:    SPTEdge[]
   var oriented: Bool
   
+  
+  
   init()
   {
     self.vertices = SPTVertice[]()
@@ -21,13 +23,16 @@ class SPTGraph: NSObject
     self.oriented = false
   }
   
+  
+  
   // return true if there is an egde between x and y
+  
   func adjacent(x: SPTVertice, y: SPTVertice) -> Bool
   {
     for edge in self.edges
     {
-      if (edge.startVertice != x) {continue}
-      if (edge.endVertice != y)   {continue}
+      if (edge.startVertice != x && edge.startVertice != y) {continue}
+      if (edge.endVertice   != y && edge.endVertice   != x) {continue}
       
       return true
     }
@@ -35,18 +40,42 @@ class SPTGraph: NSObject
     return false
   }
   
+  
+  
   func neighbors(x: SPTVertice) -> SPTVertice[]
   {
-    return SPTVertice[]()
+    var xNeighbors = SPTVertice[]()
+    
+    for edge in self.edges
+    {
+      if (edge.startVertice != x && edge.endVertice != x) {continue}
+      
+      if (edge.startVertice == x)
+      {
+        xNeighbors.append(edge.endVertice)
+      }
+      else
+      {
+        xNeighbors.append(edge.startVertice)
+      }
+    }
+    
+    return xNeighbors
   }
   
+  
+  
   // the order of a graph is |V| (the number of vertices)
+  
   func order() -> Int
   {
     return self.vertices.count
   }
   
+  
+  
   // A graph's size is |E|, the number of edges
+  
   func size() -> Int
   {
     return self.edges.count
@@ -57,10 +86,12 @@ class SPTGraph: NSObject
     self.vertices.append(x)
   }
   
-  // Will first verify that 
-  //
-  //  - there isn't already an edge between the two vertices between adding one
-  //  - the two vertices are in the graph
+  
+  
+  /// Will first verify that
+  ///
+  ///  - there isn't already an edge between the two vertices between adding one
+  ///  - the two vertices are in the graph
   
   func addEdge(x: SPTVertice, y:SPTVertice)
   {
@@ -72,8 +103,11 @@ class SPTGraph: NSObject
     self.edges.append(edge)
   }
   
-  // this is certainly not optimal but for the moment being
-  // we are seeking robustness more than efficiency
+  
+  
+  /// this is certainly not optimal but for the moment being
+  /// we are seeking robustness more than efficiency
+  
   func containsVertice(x: SPTVertice) -> Bool
   {
     return self.vertices.filter({$0 == x}).count > 0

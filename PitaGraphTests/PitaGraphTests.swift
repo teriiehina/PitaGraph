@@ -126,4 +126,29 @@ class PitaGraphTests: XCTestCase
     XCTAssertEqual(graph.containsVertice(b) , false , "There should not be B in the graph")
   }
   
+  func testNeighbourhood()
+  {
+    var graph = SPTGraph()
+    
+    let a = SPTVertice(name: "A")
+    let b = SPTVertice(name: "B")
+    let c = SPTVertice(name: "C")
+    let d = SPTVertice(name: "D")
+    
+    graph.addVertice(a)
+    graph.addVertice(b)
+    graph.addVertice(c)
+    graph.addVertice(d)
+    
+    graph.addEdge(a, y: b)
+    graph.addEdge(c, y: a)
+    graph.addEdge(c, y: d)
+    
+    let neighbors = graph.neighbors(a)
+    
+    XCTAssertEqual(neighbors.filter({$0 == b}).count == 1 , true  , "B should be a neighbor of A")
+    XCTAssertEqual(neighbors.filter({$0 == c}).count == 1 , true  , "C should be a neighbor of A")
+    XCTAssertEqual(neighbors.filter({$0 == d}).count == 0 , true  , "D should be a neighbor of A")
+  }
+  
 }
