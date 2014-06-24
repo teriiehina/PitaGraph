@@ -30,7 +30,7 @@ class SPTSubwayTests: XCTestCase
     XCTAssertEqual(stops.count , 381 , "We should have 381 stops")
     
     let segments = datas["segments"] as NSArray
-    XCTAssertEqual(segments.count , 723 , "We should have 381 stops")
+    XCTAssertEqual(segments.count , 722 , "We should have 722 segments")
   }
   
   func testImportSubwayDatas()
@@ -56,9 +56,15 @@ class SPTSubwayTests: XCTestCase
     
     for segment in segments
     {
+      let start = graph.getVertice(segment["start"]!)
+      let end   = graph.getVertice(segment["stop"]!)
+      
+      XCTAssertTrue(start , "We should have a start")
+      XCTAssertTrue(end   , "We should have a end")
 
+      XCTAssertTrue(graph.addEdge(start!, y: end!) , "We should be able to add an edge from \(start!.name) to \(end!.name)")
     }
 
-
+    XCTAssertEqual(graph.size(), 722, "We should have 722 segments")
   }
 }
