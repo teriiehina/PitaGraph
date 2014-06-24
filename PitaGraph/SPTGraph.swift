@@ -10,7 +10,7 @@ import UIKit
 
 class SPTGraph: NSObject
 {
-  var vertices: SPTVertice[]
+  var vertices: Dictionary<String , SPTVertice>
   var edges:    SPTEdge[]
   var oriented: Bool
   
@@ -20,7 +20,7 @@ class SPTGraph: NSObject
   
   init()
   {
-    self.vertices = SPTVertice[]()
+    self.vertices = Dictionary<String , SPTVertice>()
     self.edges    = SPTEdge[]()
     self.oriented = false
   }
@@ -93,7 +93,7 @@ class SPTGraph: NSObject
   
   func addVertice(x: SPTVertice)
   {
-    self.vertices.append(x)
+    self.vertices[x.identifier] = x
   }
   
   
@@ -122,7 +122,14 @@ class SPTGraph: NSObject
   
   func containsVertice(x: SPTVertice) -> Bool
   {
-    return self.vertices.filter({$0 == x}).count > 0
+    for v in self.vertices.values
+    {
+      if v == x
+      {
+        return true
+      }
+    }
+    return false
   }
   
 }

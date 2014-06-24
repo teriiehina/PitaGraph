@@ -44,7 +44,7 @@ class SPTSubwayTests: XCTestCase
     var graph     = SPTGraph()
 
     let stops     = datas["stops"] as Array<Dictionary<String , String>>
-    let segments  = datas["segments"] as NSArray
+    let segments  = datas["segments"] as Array<Dictionary<String , String>>
     
     
     for stop in stops
@@ -54,6 +54,10 @@ class SPTSubwayTests: XCTestCase
     
     XCTAssertEqual(graph.order(), 381, "We should have 381 stops")
     
+    for segment in segments
+    {
+
+    }
 
 
   }

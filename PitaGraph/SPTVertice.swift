@@ -20,4 +20,10 @@ class SPTVertice: NSObject
     
     super.init()
   }
+
+}
+
+@infix func == (left: SPTVertice, right: SPTVertice) -> Bool
+{
+  return (left.name == right.name) && (left.identifier == right.identifier)
 }
