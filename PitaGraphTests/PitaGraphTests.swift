@@ -147,7 +147,7 @@ class PitaGraphTests: XCTestCase
     let neighbors = graph.neighbors(a)
     
     XCTAssertEqual(neighbors.filter({$0 == b}).count == 1 , true  , "B should be a neighbor of A")
-    XCTAssertEqual(neighbors.filter({$0 == c}).count == 1 , true  , "C should be a neighbor of A")
+    XCTAssertEqual(neighbors.filter({$0 == c}).count == 0 , true  , "C should not be a neighbor of A")
     XCTAssertEqual(neighbors.filter({$0 == d}).count == 0 , true  , "D should be a neighbor of A")
   }
   

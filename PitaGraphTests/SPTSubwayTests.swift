@@ -66,5 +66,13 @@ class SPTSubwayTests: XCTestCase
     }
 
     XCTAssertEqual(graph.size(), 722, "We should have 722 segments")
+    
+    let laFourche = graph.getVertice("355")
+    
+    XCTAssertTrue(laFourche, "'La Fourche' should exist")
+    XCTAssertEqual(laFourche!.name, "La Fourche" , "We should have retrieved 'La Fourche'")
+    
+    XCTAssertEqual(graph.neighbors(laFourche!).count, 3, "'La Fourche' should have three neighbors")
+    
   }
 }

@@ -46,24 +46,17 @@ class SPTGraph: NSObject
   
   // Return all vertices y such as
   //
-  //  - there is an edge from x to y or 
-  //  - there is an edge from y to x.
+  //  - there is an edge from x to y
   
   func neighbors(x: SPTVertice) -> SPTVertice[]
   {
     var xNeighbors = SPTVertice[]()
     
     for edge in self.edges
-    {
-      if (edge.startVertice != x && edge.endVertice != x) {continue}
-      
+    {      
       if (edge.startVertice == x)
       {
         xNeighbors.append(edge.endVertice)
-      }
-      else
-      {
-        xNeighbors.append(edge.startVertice)
       }
     }
     
