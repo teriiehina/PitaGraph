@@ -60,7 +60,7 @@ class PitaGraphTests: XCTestCase
     
     graph.addVertice(a)
     graph.addVertice(b)
-    graph.addVertice(b)
+    graph.addVertice(c)
     
     graph.addEdge(a, y: b)
     
@@ -149,6 +149,25 @@ class PitaGraphTests: XCTestCase
     XCTAssertEqual(neighbors.filter({$0 == b}).count == 1 , true  , "B should be a neighbor of A")
     XCTAssertEqual(neighbors.filter({$0 == c}).count == 1 , true  , "C should be a neighbor of A")
     XCTAssertEqual(neighbors.filter({$0 == d}).count == 0 , true  , "D should be a neighbor of A")
+  }
+  
+  func testGetVertices()
+  {
+    var graph = SPTGraph()
+    
+    let a = SPTVertice(name: "A" , identifier: "a")
+    let b = SPTVertice(name: "B" , identifier: "b")
+    let c = SPTVertice(name: "C" , identifier: "c")
+    
+    graph.addVertice(a)
+    graph.addVertice(b)
+    graph.addVertice(c)
+    
+    graph.addEdge(a, y: b)
+    
+    XCTAssertEqual(graph.getVertice("a")! , a  , "We should be able to retrieve A")
+    XCTAssertEqual(graph.getVertice("b")! , b  , "We should be able to retrieve B")
+    XCTAssertEqual(graph.getVertice("c")! , c  , "We should be able to retrieve C")
   }
   
 }

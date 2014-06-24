@@ -96,6 +96,11 @@ class SPTGraph: NSObject
     self.vertices[x.identifier] = x
   }
   
+  func getVertice(identifier: String) -> SPTVertice?
+  {
+    return self.vertices[identifier]
+  }
+  
   
   /// Add an edge between the two given vertices.
   ///
