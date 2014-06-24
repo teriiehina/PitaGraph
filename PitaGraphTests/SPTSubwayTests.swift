@@ -14,65 +14,54 @@ import PitaGraph
 class SPTSubwayTests: XCTestCase
 {
 
-  func testCountSubwayDatas()
+  var graph: SPTGraph?
+  
+  override func setUp()
   {
+    super.setUp()
+    
     let testBundle  = NSBundle(forClass: self.dynamicType)
     let path        = testBundle.pathForResource("all", ofType:"plist")
-      
+    
     let dict: NSDictionary? = NSDictionary(contentsOfFile:path)
-
-    XCTAssertTrue(dict)
-    
     let datas = dict!
-    XCTAssertEqual(datas.allKeys.count, 2, "We should have stops and segments")
     
-    let stops = datas["stops"] as NSArray
-    XCTAssertEqual(stops.count , 381 , "We should have 381 stops")
+    self.graph     = SPTGraph()
     
-    let segments = datas["segments"] as NSArray
-    XCTAssertEqual(segments.count , 722 , "We should have 722 segments")
+    let stops     = datas["stops"]    as Array<Dictionary<String , String>>
+    let segments  = datas["segments"] as Array<Dictionary<String , String>>
+    
+    for stop in stops
+    {
+      self.graph!.addVertice(SPTVertice(name: stop["name"]! , identifier: stop["stop_id"]!))
+    }
+    
+    for segment in segments
+    {
+      let start = self.graph!.getVertice(segment["start"]!)
+      let end   = self.graph!.getVertice(segment["stop"]!)
+      
+      self.graph!.addEdge(start!, y: end!)
+    }
   }
   
   func testImportSubwayDatas()
   {
-    let testBundle  = NSBundle(forClass: self.dynamicType)
-    let path        = testBundle.pathForResource("all", ofType:"plist")
-    
-    let dict: NSDictionary? = NSDictionary(contentsOfFile:path)
-    let datas = dict!
-    
-    var graph     = SPTGraph()
+    XCTAssertTrue(self.graph, "We should have a non-nil graph")
 
-    let stops     = datas["stops"] as Array<Dictionary<String , String>>
-    let segments  = datas["segments"] as Array<Dictionary<String , String>>
+    XCTAssertEqual(self.graph!.order(), 381, "We should have 381 stops")
+    XCTAssertEqual(self.graph!.size() , 722, "We should have 722 segments")
+  }
+  
+  func testLaFourche()
+  {
+    XCTAssertTrue(self.graph, "We should have a non-nil graph")
     
-    
-    for stop in stops
-    {
-      graph.addVertice(SPTVertice(name: stop["name"]! , identifier: stop["stop_id"]!))
-    }
-    
-    XCTAssertEqual(graph.order(), 381, "We should have 381 stops")
-    
-    for segment in segments
-    {
-      let start = graph.getVertice(segment["start"]!)
-      let end   = graph.getVertice(segment["stop"]!)
-      
-      XCTAssertTrue(start , "We should have a start")
-      XCTAssertTrue(end   , "We should have a end")
-
-      XCTAssertTrue(graph.addEdge(start!, y: end!) , "We should be able to add an edge from \(start!.name) to \(end!.name)")
-    }
-
-    XCTAssertEqual(graph.size(), 722, "We should have 722 segments")
-    
-    let laFourche = graph.getVertice("355")
+    let laFourche = self.graph!.getVertice("355")
     
     XCTAssertTrue(laFourche, "'La Fourche' should exist")
     XCTAssertEqual(laFourche!.name, "La Fourche" , "We should have retrieved 'La Fourche'")
     
-    XCTAssertEqual(graph.neighbors(laFourche!).count, 3, "'La Fourche' should have three neighbors")
-    
+    XCTAssertEqual(self.graph!.neighbors(laFourche!).count, 3, "'La Fourche' should have three neighbors")
   }
 }
