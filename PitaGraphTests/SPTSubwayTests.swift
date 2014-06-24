@@ -14,7 +14,7 @@ import PitaGraph
 class SPTSubwayTests: XCTestCase
 {
 
-  func testImportSubwayDatas()
+  func testCountSubwayDatas()
   {
     let testBundle  = NSBundle(forClass: self.dynamicType)
     let path        = testBundle.pathForResource("all", ofType:"plist")
@@ -24,12 +24,37 @@ class SPTSubwayTests: XCTestCase
     XCTAssertTrue(dict)
     
     let datas = dict!
-    let keys  = datas.allKeys
+    XCTAssertEqual(datas.allKeys.count, 2, "We should have stops and segments")
     
-    XCTAssertEqual(datas.allKeys.count, 2, "We should have 2 keys")
+    let stops = datas["stops"] as NSArray
+    XCTAssertEqual(stops.count , 381 , "We should have 381 stops")
     
-    let stops: Array<Dictionary<String, AnyObject>>? = datas["stops"] as Array<Dictionary<String, AnyObject>>?
+    let segments = datas["segments"] as NSArray
+    XCTAssertEqual(segments.count , 723 , "We should have 381 stops")
+  }
+  
+  func testImportSubwayDatas()
+  {
+    let testBundle  = NSBundle(forClass: self.dynamicType)
+    let path        = testBundle.pathForResource("all", ofType:"plist")
     
-    XCTAssertTrue(stops, "We should have stops in the datas")
+    let dict: NSDictionary? = NSDictionary(contentsOfFile:path)
+    let datas = dict!
+    
+    var graph     = SPTGraph()
+
+    let stops     = datas["stops"] as Array<Dictionary<String , String>>
+    let segments  = datas["segments"] as NSArray
+    
+    
+    for stop in stops
+    {
+      graph.addVertice(SPTVertice(name: stop["name"]! , identifier: stop["stop_id"]!))
+    }
+    
+    XCTAssertEqual(graph.order(), 381, "We should have 381 stops")
+    
+
+
   }
 }

@@ -28,7 +28,7 @@ class PitaGraphTests: XCTestCase
     
     XCTAssertEqual(graph.order() , 0 , "The graph should be have no vertice")
     
-    graph.addVertice(SPTVertice(name: "A"))
+    graph.addVertice(SPTVertice(name: "A" , identifier: ""))
     
     XCTAssertEqual(graph.order() , 1 , "The graph should have one vertice")
   }
@@ -39,8 +39,8 @@ class PitaGraphTests: XCTestCase
     
     XCTAssertEqual(graph.size() , 0 , "The graph should have no edge")
     
-    let a = SPTVertice(name: "A")
-    let b = SPTVertice(name: "B")
+    let a = SPTVertice(name: "A" , identifier: "")
+    let b = SPTVertice(name: "B" , identifier: "")
     
     graph.addVertice(a)
     graph.addVertice(b)
@@ -54,9 +54,9 @@ class PitaGraphTests: XCTestCase
   {
     var graph = SPTGraph()
     
-    let a = SPTVertice(name: "A")
-    let b = SPTVertice(name: "B")
-    let c = SPTVertice(name: "C")
+    let a = SPTVertice(name: "A" , identifier: "")
+    let b = SPTVertice(name: "B" , identifier: "")
+    let c = SPTVertice(name: "C" , identifier: "")
     
     graph.addVertice(a)
     graph.addVertice(b)
@@ -72,7 +72,7 @@ class PitaGraphTests: XCTestCase
   {
     var graph = SPTGraph()
     
-    let a = SPTVertice(name: "A")
+    let a = SPTVertice(name: "A" , identifier: "")
     
     graph.addVertice(a)
     
@@ -85,8 +85,8 @@ class PitaGraphTests: XCTestCase
     
     XCTAssertEqual(graph.size() , 0 , "The graph should have no edge")
     
-    let a = SPTVertice(name: "A")
-    let b = SPTVertice(name: "B")
+    let a = SPTVertice(name: "A" , identifier: "")
+    let b = SPTVertice(name: "B" , identifier: "")
     
     graph.addVertice(a)
     graph.addVertice(b)
@@ -101,8 +101,8 @@ class PitaGraphTests: XCTestCase
   {
     var graph = SPTGraph()
     
-    let a = SPTVertice(name: "A")
-    let b = SPTVertice(name: "B")
+    let a = SPTVertice(name: "A" , identifier: "")
+    let b = SPTVertice(name: "B" , identifier: "")
     
     graph.addVertice(a)
     
@@ -115,8 +115,8 @@ class PitaGraphTests: XCTestCase
   {
     var graph = SPTGraph()
     
-    let a = SPTVertice(name: "A")
-    let b = SPTVertice(name: "B")
+    let a = SPTVertice(name: "A" , identifier: "")
+    let b = SPTVertice(name: "B" , identifier: "")
     
     graph.addVertice(a)
     
@@ -130,10 +130,10 @@ class PitaGraphTests: XCTestCase
   {
     var graph = SPTGraph()
     
-    let a = SPTVertice(name: "A")
-    let b = SPTVertice(name: "B")
-    let c = SPTVertice(name: "C")
-    let d = SPTVertice(name: "D")
+    let a = SPTVertice(name: "A" , identifier: "")
+    let b = SPTVertice(name: "B" , identifier: "")
+    let c = SPTVertice(name: "C" , identifier: "")
+    let d = SPTVertice(name: "D" , identifier: "")
     
     graph.addVertice(a)
     graph.addVertice(b)
